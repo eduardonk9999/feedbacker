@@ -12,11 +12,15 @@
 
         <div class="flex">
           <button
+            @click="() => emit('create-account')"
             class="px-6 py-2 font-bold rounded-full text-white focus:outline-none"
           >
             Crie uma conta
           </button>
-          <button class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline-none">
+          <button
+            @click="() => emit('login')"
+            class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline-none"
+          >
             Entrar
           </button>
         </div>
@@ -46,6 +50,11 @@
 </template>
 
 <script>
+export default {
+  setup (_, { emit }) {
+    return { emit }
+  }
+}
 </script>
 
 <style lang="postcss" scoped>
@@ -55,10 +64,9 @@
 }
 .header-group {
   @apply flex flex-col w-4/5 max-w-6xl;
-
 }
 @media (min-width: 640px) {
-  .header-group{
+  .header-group {
     background-image: url(../../assets/images/blue_balloons.png);
     background-size: 628px;
     background-position: 90% 100%;
